@@ -33,13 +33,13 @@ const EntrieList = () => {
       </div>
     );
 
-  const posts = postReq.getEntries;
+  const posts = postReq.getEntries || [];
 
   return (
     <>
       <PostEntrie />
 
-      {posts.data?.map((post) => (
+      {posts.data?.map((post: any) => (
         <div className="comment" style={{ margin: 5 }} key={post.uniqId}>
           <div className="header">
             <span className="name">{post.User.username}</span>

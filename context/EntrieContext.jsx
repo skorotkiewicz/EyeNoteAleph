@@ -94,7 +94,7 @@ export const PostContext = ({ children }) => {
       }}
     >
       {loading ? (
-        <div>
+        <div className="loading">
           <Radio
             visible={true}
             height="60"
