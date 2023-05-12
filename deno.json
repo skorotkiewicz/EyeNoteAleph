@@ -16,7 +16,6 @@
 
     "prisma:init": "deno run -A --allow-read --allow-env --allow-write npm:prisma@^4.13 init",
     "prisma:push": "deno run -A npm:prisma@^4.13 db push",
-    "prisma:generate": "deno run -A npm:prisma@^4.13 generate --data-proxy",
-    "prisma:seed": "deno run -A prisma/seed.js"
+    "prisma:generate": "deno run -A npm:prisma@^4.13 generate --data-proxy"
   }
 }
