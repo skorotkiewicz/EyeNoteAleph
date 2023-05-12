@@ -27,15 +27,6 @@ const yoga = createYoga({
   // },
 });
 
-// ServeQL(yoga, {
-//   port: 4000,
-//   onListen({ hostname, port }: any) {
-//     console.log(
-//       `Listening on http://${hostname}:${port}${yoga.graphqlEndpoint}`
-//     );
-//   },
-// });
-
 serve({
   plugins: [denoDeploy({ modules }), react({ ssr: true }), unocss(config)],
   middlewares: [
