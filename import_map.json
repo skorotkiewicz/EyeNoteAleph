@@ -1,0 +1,32 @@
+{
+  "imports": {
+    "~/": "./",
+    "std/": "https://deno.land/std@0.180.0/",
+    "aleph/": "https://deno.land/x/aleph@1.0.0-beta.43/",
+    "aleph/server": "https://deno.land/x/aleph@1.0.0-beta.43/server/mod.ts",
+    "aleph/dev": "https://deno.land/x/aleph@1.0.0-beta.43/server/dev.ts",
+    "aleph/plugins/deploy": "https://deno.land/x/aleph@1.0.0-beta.43/plugins/deploy.ts",
+    "aleph/plugins/unocss": "https://deno.land/x/aleph@1.0.0-beta.43/plugins/unocss.ts",
+    "unocss": "https://esm.sh/unocss@0.51.12",
+    "@unocss/core": "https://esm.sh/v120/@unocss/core@0.50.6",
+    "@unocss/preset-uno": "https://esm.sh/v120/@unocss/preset-uno@0.50.6",
+    "@unocss/transformer-compile-class": "https://esm.sh/@unocss/transformer-compile-class@0.51.12",
+    "aleph/react": "https://deno.land/x/aleph@1.0.0-beta.43/framework/react/mod.ts",
+    "aleph/plugins/react": "https://deno.land/x/aleph@1.0.0-beta.43/framework/react/plugin.ts",
+    "react": "https://esm.sh/v120/react@18.2.0",
+    "react-dom": "https://esm.sh/v120/react-dom@18.2.0",
+    "react-dom/": "https://esm.sh/v120/react-dom@18.2.0/",
+
+    "zustand": "https://esm.sh/zustand@4.3.8",
+    "zustand/middleware": "https://esm.sh/zustand@4.3.8/middleware",
+
+    "react-loader-spinner": "https://esm.sh/react-loader-spinner@5.3.4",
+    "prisma-pagination": "https://esm.sh/prisma-pagination@0.2.3",
+    "hashids": "https://esm.sh/hashids@2.2.11",
+    "graphql-request": "https://esm.sh/graphql-request@6.0.0",
+    "js-cookie": "https://esm.sh/js-cookie@3.0.5",
+    "react-toastify": "https://esm.sh/react-toastify@9.1.2",
+    "@iconify/react": "https://esm.sh/@iconify/react@4.1.0"
+  },
+  "scopes": {}
+}

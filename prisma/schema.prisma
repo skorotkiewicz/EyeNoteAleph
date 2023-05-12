@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["deno"]
+  output          = "./generated/client"
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  username String    @unique
+  password String
+  email    String    @unique
+  joined   DateTime  @default(now())
+  lastSeen DateTime?
+
+  following Follows[] @relation("Following")
+  followers Follows[] @relation("Followers")
+
+  entries    Entrie[]
+  likes      LikeComment[]
+  likesEntry LikeEntry[]
+
+  comments Comment[]
+}
+
+model Follows {
+  following   User @relation("Followers", fields: [followingId], references: [id])
+  followingId Int
+  follower    User @relation("Following", fields: [followerId], references: [id])
+  followerId  Int
+
+  @@id([followerId, followingId])
+}
+
+model Entrie {
+  id     Int      @id @default(autoincrement())
+  uniqId String   @unique
+  title  String?
+  post   String
+  added  DateTime @default(now())
+  // likes  Int      @default(0)
+
+  User   User? @relation(fields: [userId], references: [id])
+  userId Int
+  votes  Int   @default(0)
+
+  likes    LikeEntry[]
+  comments Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  uniqId    String   @unique
+  comment   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+
+  Entrie   Entrie @relation(fields: [entrieId], references: [uniqId], onDelete: Cascade)
+  entrieId String
+
+  parent   Comment?  @relation("ParentChild", fields: [parentId], references: [uniqId], onDelete: Cascade)
+  parentId String?
+  children Comment[] @relation("ParentChild")
+
+  likes LikeComment[]
+}
+
+model LikeComment {
+  User     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   Int
+  comment  Comment @relation(fields: [entrieId], references: [uniqId], onDelete: Cascade)
+  entrieId String
+
+  @@id([userId, entrieId])
+}
+
+model LikeEntry {
+  User   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+
+  Entrie   Entrie @relation(fields: [entrieId], references: [uniqId], onDelete: Cascade)
+  entrieId String
+
+  @@id([userId, entrieId])
+}
